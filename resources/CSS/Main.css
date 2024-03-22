@@ -1,0 +1,34 @@
+.root {
+    -fx-background-color: #1f1f1f; /* Dark grey */
+}
+
+.label {
+    -fx-text-fill: #FFFFFF; /* White */
+}
+
+.button {
+    -fx-background-color: #2f2f2f; /* Dark grey */
+    -fx-text-fill: #ffffff; /* White */
+}
+
+.button:hover {
+    -fx-background-color: #3f3f3f; /* Dark grey - hover */
+}
+
+.button:pressed {
+    -fx-background-color: #0f0f0f; /* Almost black - pressed */
+}
+
+.imageView {
+    -fx-background-color: #000000; /* Black */
+}
+
+.imageView:hover {
+    -fx-cursor: hand; /* Change cursor to hand when hovering over the image */
+}
+
+.HBox {
+    -fx-background-color: #464646;
+}
+
+
