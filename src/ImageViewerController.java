@@ -1,15 +1,16 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 public class ImageViewerController {
 
@@ -18,14 +19,12 @@ public class ImageViewerController {
     @FXML
     public Button loadImagesBtn;
     @FXML
-    public Button nextBtn;
-    @FXML
-    public Button previousBtn;
-
-
+    public Button nextBtn, previousBtn, slideshowBtn;
+    public boolean isSlideshowActive = false;
 
     private List<File> imageFiles = new ArrayList<>();
     private int currentIndex = -1;
+    private Timeline slideshowTimeline;
 
     public void initialize() {
         loadImages();
@@ -74,7 +73,28 @@ public class ImageViewerController {
         }
     }
 
+    @FXML
+    private void slideshowBtn(ActionEvent actionEvent) {
+        if (!isSlideshowActive && !imageFiles.isEmpty()) {
+            isSlideshowActive = true;
+            slideshowTimeline = new Timeline(
+                    new KeyFrame(Duration.seconds(2), event -> {
+                        nextImage(); // Display a new image every 2 seconds
+                    })
+            );
+            slideshowTimeline.setCycleCount(Timeline.INDEFINITE); // Repeat FOREVER !!
+            slideshowTimeline.play();
+            slideshowBtn.setText("Stop Slideshow"); // Change button text
+        } else {
+            stopSlideshow(); // Stop slideshow if it's already active
+        }
+    }
 
-
-
+    private void stopSlideshow() {
+        if (slideshowTimeline != null) {
+            slideshowTimeline.stop();
+            isSlideshowActive = false;
+            slideshowBtn.setText("Start Slideshow"); // Change button text
+        }
+    }
 }
