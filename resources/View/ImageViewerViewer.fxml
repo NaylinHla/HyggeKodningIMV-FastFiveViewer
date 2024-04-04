@@ -14,24 +14,6 @@
    <children>
       <HBox layoutY="322.0" prefHeight="100.0" prefWidth="601.0">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="497.0" styleClass="HBox" stylesheets="@../CSS/Main.css">
-               <children>
-                  <Button fx:id="previousBtn" mnemonicParsing="false" onAction="#previousImage" stylesheets="@../CSS/Main.css" text="Previous">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#nextImage" stylesheets="@../CSS/Main.css" text="Next">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin></Button>
-               </children>
-            </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="325.0" styleClass="HBox" stylesheets="@../CSS/Main.css">
                <children>
                   <Button fx:id="slideshowBtn" mnemonicParsing="false" onAction="#slideshowBtn" stylesheets="@../CSS/Main.css" text="Start Slideshow">
@@ -50,6 +32,33 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="408.0" styleClass="HBox" stylesheets="@../CSS/Main.css">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="221.0">
+                     <children>
+                        <Label fx:id="imageTxt" text="Sample Text">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Button fx:id="previousBtn" mnemonicParsing="false" onAction="#previousImage" stylesheets="@../CSS/Main.css" text="Previous">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#nextImage" stylesheets="@../CSS/Main.css" text="Next">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </children>

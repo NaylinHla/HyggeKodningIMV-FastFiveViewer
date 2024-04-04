@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.animation.KeyFrame;
@@ -21,6 +22,7 @@ public class ImageViewerController {
     @FXML
     public Button nextBtn, previousBtn, slideshowBtn;
     public boolean isSlideshowActive = false;
+    public Label imageTxt;
 
     private List<File> imageFiles = new ArrayList<>();
     private int currentIndex = -1;
@@ -54,6 +56,9 @@ public class ImageViewerController {
             File imageFile = imageFiles.get(currentIndex);
             Image image = new Image(imageFile.toURI().toString());
             myImageView.setImage(image);
+
+            // Set text to display the name of the image
+            imageTxt.setText(imageFile.getName());
         }
     }
 
