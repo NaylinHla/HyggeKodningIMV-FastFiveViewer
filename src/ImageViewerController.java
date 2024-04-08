@@ -6,10 +6,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.image.PixelReader;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -51,6 +54,47 @@ public class ImageViewerController {
         return fileName.toLowerCase().endsWith(".jpg") || fileName.toLowerCase().endsWith(".png");
     }
 
+    public void countColors(Image image) {
+        // Create a PixelReader to read pixel data from the image
+        PixelReader pixelReader = image.getPixelReader();
+
+        // Get the width and height of the image
+        int width = (int) image.getWidth();
+        int height = (int) image.getHeight();
+
+        // Initialize counters for each color
+        int redCount = 0;
+        int greenCount = 0;
+        int blueCount = 0;
+
+        // Iterate through each pixel in the image
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                // Get the color of the pixel at position (x, y)
+                Color color = pixelReader.getColor(x, y);
+
+                // Extract RGB components
+                double red = color.getRed();
+                double green = color.getGreen();
+                double blue = color.getBlue();
+
+                // Determine the dominant color channel
+                if (red >= green && red >= blue) {
+                    redCount++;
+                } else if (green >= red && green >= blue) {
+                    greenCount++;
+                } else {
+                    blueCount++;
+                }
+            }
+        }
+
+        // Output the count for each color
+        System.out.println("Red pixels: " + redCount);
+        System.out.println("Green pixels: " + greenCount);
+        System.out.println("Blue pixels: " + blueCount);
+    }
+
     public void displayImage() {
         if (currentIndex >= 0 && currentIndex < imageFiles.size()) {
             File imageFile = imageFiles.get(currentIndex);
@@ -59,6 +103,9 @@ public class ImageViewerController {
 
             // Set text to display the name of the image
             imageTxt.setText(imageFile.getName());
+
+            // Count colors in the image
+            countColors(image);
         }
     }
 
