@@ -8,12 +8,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.PixelReader;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class ImageViewerController {
 
@@ -33,20 +33,20 @@ public class ImageViewerController {
     private int currentIndex = -1;
     private Timeline slideshowTimeline;
 
-    public void initialize() {
-        loadImages();
-    }
+    @FXML
+    public void initialize() {}
 
-    public void loadImages() {
-        File picturesFolder = new File("resources/Pictures");
-        if (picturesFolder.isDirectory()) {
-            for (File file : picturesFolder.listFiles()) {
-                if (file.isFile() && isImageFile(file.getName())) {
-                    imageFiles.add(file);
-                }
-            }
-        }
-        if (!imageFiles.isEmpty()) {
+    @FXML
+    public void loadImagesBtn(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Images");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(loadImagesBtn.getScene().getWindow());
+        if (selectedFiles != null) {
+            imageFiles.clear(); // Clear previous image files
+            imageFiles.addAll(selectedFiles);
             currentIndex = 0; // Set current index to the first image
             displayImage();
         }
