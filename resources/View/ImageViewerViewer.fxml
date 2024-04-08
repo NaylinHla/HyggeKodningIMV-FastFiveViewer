@@ -39,7 +39,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="221.0">
                      <children>
-                        <Label fx:id="imageTxt" text="&lt;-- Select Images">
+                        <Label fx:id="imageTxt" prefHeight="105.0" prefWidth="227.0" text="&lt;-- Select Images">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

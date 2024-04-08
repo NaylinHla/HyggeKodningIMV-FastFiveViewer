@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.animation.KeyFrame;
@@ -105,6 +106,9 @@ public class ImageViewerController {
 
             // Set text to display the name of the image
             imageTxt.setText(imageFile.getName());
+
+            // Set tooltip text to the name of the image
+            Tooltip.install(myImageView, new Tooltip(imageFile.getName()));
 
             // Count colors in the image
             countColors(image);
