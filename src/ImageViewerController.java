@@ -12,7 +12,6 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -26,6 +25,9 @@ public class ImageViewerController {
     public Button nextBtn, previousBtn, slideshowBtn;
     public boolean isSlideshowActive = false;
     public Label imageTxt;
+    public Label redTxt;
+    public Label greenTxt;
+    public Label blueTxt;
 
     private List<File> imageFiles = new ArrayList<>();
     private int currentIndex = -1;
@@ -89,10 +91,10 @@ public class ImageViewerController {
             }
         }
 
-        // Output the count for each color
-        System.out.println("Red pixels: " + redCount);
-        System.out.println("Green pixels: " + greenCount);
-        System.out.println("Blue pixels: " + blueCount);
+        // Sets text to the corresponding color
+        redTxt.setText("Red pixels: " + redCount);
+        greenTxt.setText("Green pixels: " + greenCount);
+        blueTxt.setText("Blue pixels: " + blueCount);
     }
 
     public void displayImage() {

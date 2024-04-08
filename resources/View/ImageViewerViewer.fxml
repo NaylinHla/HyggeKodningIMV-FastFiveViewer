@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ImageViewerController">
@@ -65,7 +66,14 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="58.0" prefHeight="265.0" prefWidth="601.0" styleClass="HBox" stylesheets="@../CSS/Main.css">
          <children>
-            <ImageView fx:id="myImageView" fitHeight="265.0" fitWidth="584.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+            <VBox alignment="CENTER" prefHeight="265.0" prefWidth="143.0">
+               <children>
+                  <Label fx:id="redTxt" text=" Red: N/A" />
+                  <Label fx:id="greenTxt" text="Green: N/A" />
+                  <Label fx:id="blueTxt" text="Blue: N/A" />
+               </children>
+            </VBox>
+            <ImageView fx:id="myImageView" fitHeight="238.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                <image>
                   <Image url="@../Pictures/nature1.jpg" />
                </image>
